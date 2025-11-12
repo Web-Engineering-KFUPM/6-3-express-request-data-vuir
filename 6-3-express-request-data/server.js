@@ -116,7 +116,6 @@ app.listen(3000, ()=> console.log("API running at http://localhost:3000"));
 
 
 // Query params: /echo?name=Ali&age=22
-
 app.get("/echo", (req, res) => {
   const { name, age } = req.query;
   if (!name || !age) {
@@ -126,6 +125,10 @@ app.get("/echo", (req, res) => {
 });
 
 // Route params: /profile/First/Last
+app.get("/profile/:first/:last", (req, res) => {
+  const { first, last } = req.params;
+  res.json({ ok: true, fullName: `${first} ${last}` });
+});
 
 
 // Route param middleware example: /users/42
